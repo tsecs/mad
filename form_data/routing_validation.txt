@@ -1,0 +1,229 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Test",
+      initialRoute: '/',
+      routes: {
+        '/': (context) => MainPage(),
+        '/qualification': (context) => QualificationPage(),
+      },
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  final nameController = TextEditingController();
+  final dobController = TextEditingController();
+  final addressController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Personal Details'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          child: Column(
+            children: [
+              TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                ),
+              ),
+              TextFormField(
+                controller: dobController,
+                decoration: InputDecoration(
+                  labelText: 'Date of Birth',
+                ),
+              ),
+              DropdownButtonFormField(
+                items: [
+                  DropdownMenuItem(
+                    child: Text('Male'),
+                    value: 'Male',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('Female'),
+                    value: 'Female',
+                  ),
+                ],
+                decoration: InputDecoration(
+                  labelText: 'Gender',
+                ),
+                onChanged: (value) {},
+              ),
+              TextFormField(
+                controller: addressController,
+                decoration: InputDecoration(
+                  labelText: 'Address',
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text(nameController.text.length <= 15
+                                ? "Invalid Name"
+                                : "Form Saved"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('Close'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: Text('Save'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      nameController.clear();
+                      dobController.clear();
+                      addressController.clear();
+                    },
+                    child: Text('Clear'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/qualification');
+                    },
+                    child: Text('Next'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class QualificationPage extends StatelessWidget {
+  final collController = TextEditingController();
+  final percentController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    List<String> doubleList =
+        List<String>.generate(21, (index) => (2020 - index).toString());
+    List<DropdownMenuItem> menuItemList = doubleList
+        .map((val) => DropdownMenuItem(value: val, child: Text(val)))
+        .toList();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Qualification Details'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          child: Column(
+            children: [
+              DropdownButtonFormField(
+                items: [
+                  DropdownMenuItem(
+                    child: Text('X'),
+                    value: 'X',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('XII'),
+                    value: 'XII',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('B.E.'),
+                    value: 'B.E.',
+                  ),
+                  DropdownMenuItem(
+                    child: Text('M.E.'),
+                    value: 'M.E.',
+                  ),
+                ],
+                decoration: InputDecoration(
+                  labelText: 'Highest Degree',
+                ),
+                onChanged: (value) {},
+              ),
+              TextFormField(
+                controller: collController,
+                decoration: InputDecoration(
+                  labelText: 'College Name',
+                ),
+              ),
+              TextFormField(
+                controller: percentController,
+                decoration: InputDecoration(
+                  labelText: 'Percentage Obtained',
+                ),
+              ),
+              DropdownButtonFormField(
+                items: menuItemList,
+                decoration: InputDecoration(
+                  labelText: 'Year of Passing',
+                ),
+                onChanged: (value) {},
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('Back'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text("Form Saved"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('Close'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: Text('Save'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      collController.clear();
+                      percentController.clear();
+                    },
+                    child: Text('Clear'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

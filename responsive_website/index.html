@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Store</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Linking Manifest file
+        create images folder with icons named as in manifest.json
+    -->
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body>
+    <header>
+      <h1>Grocery Store</h1>
+    </header>
+    <main class="container">
+      <div class="product">
+        <img src="product1.jpg" alt="Product 1" />
+        <h2>Organic Apples</h2>
+        <p>
+          These organic apples are fresh and delicious. They are grown using
+          sustainable farming practices without the use of harmful chemicals.
+          Each apple is hand-picked and carefully inspected to ensure the
+          highest quality.
+        </p>
+        <h3 class="price">₹80 per kg</h3>
+        <div class="btn">
+          <button>Add to cart</button>
+        </div>
+      </div>
+      <div class="product">
+        <img src="product2.jpg" alt="Product 2" />
+        <h2>Whole Wheat Bread</h2>
+        <p>
+          This whole wheat bread is made with all-natural ingredients and no
+          artificial preservatives. It is freshly baked daily and has a
+          delicious, nutty flavor. Perfect for sandwiches or toasting.
+        </p>
+        <h3 class="price">₹50 per loaf</h3>
+        <div class="btn">
+          <button>Add to cart</button>
+        </div>
+      </div>
+      <div class="product">
+        <img src="product3.jpg" alt="Product 3" />
+        <h2>Free Range Eggs</h2>
+        <p>
+          These free-range eggs come from happy hens that are able to roam and
+          forage freely. They are high in protein and rich in nutrients. Perfect
+          for a healthy breakfast or baking.
+        </p>
+        <h3 class="price">₹6 per egg</h3>
+        <div class="btn">
+          <button>Add to cart</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <!--
+        Add button below for adding to homescreen
+        A few things to look for
+        -- in Desktop Chrome
+        -- Remove icon from chrome://apps/
+        -- If that does not work, you may need to clear the cache
+  -->
+      <button class="add_btn">Click here to add to Homescreen</button>
+      <button id="notifications">Notifications</button>
+      <p>&copy; Grocery Store</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

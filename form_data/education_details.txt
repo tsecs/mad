@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Qualification Details'),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Form(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: 'Highest Degree',
+                  ),
+                  value: 'X',
+                  items: <String>['X', 'XII', 'B.E.']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (value) {},
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'College Name',
+                  ),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Percentage Obtained',
+                  ),
+                  keyboardType: TextInputType.number,
+                ),
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    labelText: 'Year of Passing',
+                  ),
+                  value: '2020',
+                  items: <String>[
+                    '2020',
+                    '2019',
+                    '2018',
+                    '2017',
+                    '2016',
+                    '2015',
+                    '2014',
+                    '2013',
+                    '2012',
+                    '2011',
+                    '2010'
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                  onChanged: (value) {},
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Back'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Save'),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Clear'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
